@@ -14,17 +14,18 @@
     </ion-text>
   </div>
 
-  <div class="german-box">
-    <ion-textarea class="german-text-box" label="Deutsch" labelPlacement="floating" fill="outline"
-      placeholder="Gib hier deinen Text ein..."></ion-textarea>
+  <div [formGroup]="translatorForm" class="german-box">
+    <ion-textarea formControlName="germanText" class="german-text-box" label="Deutsch" labelPlacement="floating"
+      fill="outline" placeholder="Gib hier deinen Text ein..."></ion-textarea>
   </div>
 
-  <div class="translation-button center">
-    <ion-button>Übersetzen</ion-button>
+  @if(!translatorForm.controls.bavarianText.value){
+  <div class="translation-area  center">
+    <ion-button (click)="translate()">Übersetzen</ion-button>
   </div>
-
-  @if(false){
-  <div>Übersetzung...</div>
+  }
+  @else{
+  <div class="translation-area ">{{translatorForm.controls.bavarianText.value}}</div>
   }
 
   <div class="speaker-icon">
