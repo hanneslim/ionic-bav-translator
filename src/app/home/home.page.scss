@@ -1,27 +1,69 @@
-#container {
-  text-align: center;
+ion-content.background {
+  --background: url(../../assets/flagge-bayern.jpg) no-repeat center center fixed;
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+ion-content::part(background) {
+  opacity: 0.4;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+.title {
+  width: 100%;
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+  height: 20%;
+  justify-content: center;
 }
 
-#container a {
-  text-decoration: none;
+.flex {
+  display: flex;
+}
+
+.title-bavarian {
+  color: skyblue;
+}
+
+.icon {
+  width: 2.7rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+
+}
+
+.font-weight {
+  font-weight: bold;
+}
+
+
+.german-box {
+  height: 30%;
+  padding: 1rem;
+}
+
+.german-text-box {
+  height: 100%
+}
+
+.translation-button {
+  height: 25%;
+  padding: 1rem;
+}
+
+.speaker-icon {
+  height: 25%;
+  padding: 1rem;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.speaker-button {
+  width: 5rem;
+  height: 5rem;
+  --border-radius: 10rem;
 }

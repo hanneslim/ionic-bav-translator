@@ -1,20 +1,43 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="background" [fullscreen]="true">
+  <div class="title">
+    <ion-text>
+      <div>
+        <h1 class="flex font-weight">Deutsch
+          <div class="padding-title flex">
+            <img src="../../assets/bav-flag-icon.png" alt="Icon" class="icon" />
+            <div class="title-bavarian">Bairisch</div>
+          </div>
+        </h1>
+        <h1 class="title"> Übersetzer</h1>
+      </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    </ion-text>
   </div>
+
+  <div class="german-box">
+    <ion-textarea class="german-text-box" label="Deutsch" labelPlacement="floating" fill="outline"
+      placeholder="Gib hier deinen Text ein..."></ion-textarea>
+  </div>
+
+  <div class="translation-button center">
+    <ion-button>Übersetzen</ion-button>
+  </div>
+
+  @if(false){
+  <div>Übersetzung...</div>
+  }
+
+  <div class="speaker-icon">
+    <div class="center">
+
+      <ion-button class="speaker-button">
+        <ion-icon slot="icon-only" name="mic-outline"></ion-icon>
+      </ion-button>
+
+    </div>
+    <div>
+      <img src="../../assets/brezel-icon.png" />
+    </div>
+  </div>
+
 </ion-content>
