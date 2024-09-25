@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="upper-box">
+    <div class="upper-left">
+      Deutsch
+    </div>
+    <div class="upper-right">
+      <ion-button class="button" (click)="delete()" size="small">
+        <ion-icon slot="start" name="close-outline"></ion-icon>
+        Löschen
+      </ion-button>
+
+    </div>
+  </div>
+  <div id="main-textbox">
+    <textarea id="textarea" [ngModel]="value()" (ngModelChange)="onModelChange($event)"
+      placeholder="Frog wosd frong wuist..."></textarea>
+
+  </div>
+
+</div>

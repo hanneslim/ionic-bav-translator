@@ -6,6 +6,7 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { TextboxComponent } from "../shared/ui/textbox/textbox.component";
+import { TextareaComponent } from "../shared/ui/textarea/textarea.component";
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { TextboxComponent } from "../shared/ui/textbox/textbox.component";
     ReactiveFormsModule,
     IonicModule,
     HomePageRoutingModule,
-    TextboxComponent
+    TextboxComponent,
+    TextareaComponent
   ],
   declarations: [HomePage]
 })

@@ -15,8 +15,8 @@
   </div>
 
   <div [formGroup]="translatorForm" class="box">
-    <ion-textarea formControlName="germanText" class="german-text-box" label="Deutsch" labelPlacement="floating"
-      fill="outline" placeholder="Gib hier deinen Text ein..."></ion-textarea>
+    <app-textarea [formControl]="translatorForm.controls.germanText"></app-textarea>
+
   </div>
 
   @if(translatorForm.controls.bavarianText.value){

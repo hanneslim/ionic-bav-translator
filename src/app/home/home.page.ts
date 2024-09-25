@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NonNullableFormBuilder } from '@angular/forms';
 import { TranslationsService } from '../shared/services/translation.service';
 
@@ -12,7 +12,7 @@ type TranslatorFormType = FormGroup<{
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
   private _fb = inject(NonNullableFormBuilder)
   private _translationService = inject(TranslationsService)
@@ -21,6 +21,14 @@ export class HomePage {
     germanText: this._fb.control<string | null>(null),
     bavarianText: this._fb.control<string | null>(null),
   });
+
+  public ngOnInit(): void {
+    this.translatorForm.controls.germanText.valueChanges.subscribe((germanValue) => {
+      if (!germanValue) {
+        this.translatorForm.controls.bavarianText.reset()
+      }
+    })
+  }
 
 
   public translate() {
