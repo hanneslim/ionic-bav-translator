@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NonNullableFormBuilder } from '@angular/forms';
 import { TranslationsService } from '../shared/services/translation.service';
+import { SpeechRecognition } from '@capacitor-community/speech-recognition';
 
 type TranslatorFormType = FormGroup<{
   germanText: FormControl<string | null>;
@@ -14,8 +15,14 @@ type TranslatorFormType = FormGroup<{
 })
 export class HomePage implements OnInit {
 
+  constructor() {
+    SpeechRecognition.requestPermissions()
+  }
+
   private _fb = inject(NonNullableFormBuilder)
   private _translationService = inject(TranslationsService)
+
+  public isRecording = false;
 
   public translatorForm: TranslatorFormType = this._fb.group({
     germanText: this._fb.control<string | null>(null),
@@ -30,6 +37,29 @@ export class HomePage implements OnInit {
     })
   }
 
+  public async startRecognition() {
+    const { available } = await SpeechRecognition.available()
+    if (available) {
+      this.isRecording = true
+      SpeechRecognition.start({
+        language: "de-DE",
+        prompt: "Sog wosd song wuist...",
+        partialResults: true,
+        popup: false
+      })
+
+      SpeechRecognition.addListener('partialResults', (data) => {
+        if (data.matches.length > 0) {
+          this.translatorForm.controls.germanText.setValue(data.matches[0])
+        }
+      })
+    }
+  }
+
+  public async stopRecognition() {
+    this.isRecording = false;
+    await SpeechRecognition.stop()
+  }
 
   public translate() {
     const text = this.translatorForm.controls.germanText.getRawValue();

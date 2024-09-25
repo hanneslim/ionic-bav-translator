@@ -33,9 +33,18 @@
   <div class="speaker-icon">
     <div class="center">
 
-      <ion-button class="speaker-button">
+      @if(!isRecording){
+      <ion-button class="speaker-button" (click)="startRecognition()">
         <ion-icon slot="icon-only" name="mic-outline"></ion-icon>
       </ion-button>
+      }
+      @else{
+      <ion-button class="speaker-button" (click)="stopRecognition()">
+        <ion-icon slot="icon-only" name="stop"></ion-icon>
+      </ion-button>
+      }
+
+
 
     </div>
     <div>
