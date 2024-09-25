@@ -32,8 +32,6 @@ export class HomePage {
     this.translatorForm.controls.bavarianText.setValue(
       this._translationService.extractAndReplaceWords(text)
     );
-
-    console.log(this.translatorForm.controls.bavarianText.value)
   }
 
 }

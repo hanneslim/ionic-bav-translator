@@ -37,7 +37,7 @@ ion-content::part(background) {
 }
 
 
-.german-box {
+.box {
   height: 30%;
   padding: 1rem;
 }
@@ -66,8 +66,18 @@ ion-content::part(background) {
   width: 5rem;
   height: 5rem;
   --border-radius: 10rem;
+  --border-width: 0.2rem;
+  --border-style: solid;
+  --border-color: var(--ion-color-secondary);
+  --background: skyblue;
+  --color: var(--ion-color-secondary);
 }
 
-// :host ion-button.button-solid {
-//   --background:
-// }
+#translator-button {
+  --background: skyblue;
+  --color: var(--ion-color-secondary);
+  --border-radius: 5rem;
+  --border-width: 0.2rem;
+  --border-style: solid;
+  --border-color: var(--ion-color-secondary);
+}
