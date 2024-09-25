@@ -39,13 +39,13 @@
     --border-radius: 5rem;
     --border-width: 0.2rem;
     --border-style: solid;
-    --border-color: var(--ion-color-secondary);
-    --background: skyblue;
-    --color: var(--ion-color-secondary);
+    --border-color: var(--ion-color-danger);
+    --background: lightcoral;
+    --color: var(--ion-color-danger);
 }
 
 .button:hover {
-    --background: var(--ion-color-secondary);
+    --background: var(--ion-color-danger);
     --color: white
 }
 
