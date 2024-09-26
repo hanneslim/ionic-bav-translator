@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit, signal } from '@angular/core';
 import { FormControl, FormGroup, NonNullableFormBuilder } from '@angular/forms';
 import { TranslationsService } from '../shared/services/translation.service';
 import { SpeechRecognition } from '@capacitor-community/speech-recognition';
@@ -22,7 +22,7 @@ export class HomePage implements OnInit {
   private _fb = inject(NonNullableFormBuilder)
   private _translationService = inject(TranslationsService)
 
-  public isRecording = false;
+  public isRecording = signal(false);
 
   public translatorForm: TranslatorFormType = this._fb.group({
     germanText: this._fb.control<string | null>(null),
@@ -40,7 +40,7 @@ export class HomePage implements OnInit {
   public async startRecognition() {
     const { available } = await SpeechRecognition.available()
     if (available) {
-      this.isRecording = true
+      this.isRecording.set(true)
       SpeechRecognition.start({
         language: "de-DE",
         prompt: "Sog wosd song wuist...",
@@ -53,11 +53,16 @@ export class HomePage implements OnInit {
           this.translatorForm.controls.germanText.setValue(data.matches[0])
         }
       })
+      SpeechRecognition.addListener('listeningState', (state) => {
+        if (state.status === "stopped") {
+          this.stopRecognition()
+        }
+      })
     }
   }
 
   public async stopRecognition() {
-    this.isRecording = false;
+    this.isRecording.set(false)
     await SpeechRecognition.stop()
   }
 

@@ -33,7 +33,7 @@
   <div class="speaker-icon">
     <div class="center">
 
-      @if(!isRecording){
+      @if(!isRecording()){
       <ion-button class="speaker-button" (click)="startRecognition()">
         <ion-icon slot="icon-only" name="mic-outline"></ion-icon>
       </ion-button>
@@ -46,9 +46,6 @@
 
 
 
-    </div>
-    <div>
-      <img src="../../assets/brezel-icon.png" />
     </div>
   </div>
 
