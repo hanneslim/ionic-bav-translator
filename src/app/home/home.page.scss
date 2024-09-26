@@ -20,8 +20,8 @@ ion-content::part(background) {
   display: flex;
 }
 
-.title-bavarian {
-  color: skyblue;
+.title-header {
+  color: var(--ion-color-secondary);
 }
 
 .icon {
