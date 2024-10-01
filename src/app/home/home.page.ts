@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, inject, OnInit, signal } from '@angular/c
 import { FormControl, FormGroup, NonNullableFormBuilder } from '@angular/forms';
 import { TranslationsService } from '../shared/services/translation.service';
 import { SpeechRecognition } from '@capacitor-community/speech-recognition';
+import { DOCUMENT } from '@angular/common';
 
 type TranslatorFormType = FormGroup<{
   germanText: FormControl<string | null>;
@@ -20,6 +21,7 @@ export class HomePage implements OnInit {
   }
 
   private _fb = inject(NonNullableFormBuilder)
+  private _document = inject(DOCUMENT)
   private _translationService = inject(TranslationsService)
 
   public isRecording = signal(false);
@@ -63,7 +65,9 @@ export class HomePage implements OnInit {
 
   public async stopRecognition() {
     this.isRecording.set(false)
+    setTimeout(() => this._document.getElementById('translator-button')?.click(), 2000)
     await SpeechRecognition.stop()
+
   }
 
   public translate() {
